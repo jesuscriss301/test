@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
 /*
@@ -42,9 +43,14 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-    
-    public ResultSet query(){
-    ResultSet res = preparedStatement.executeQuery();
-    return res;
+
+    public ResultSet query() throws SQLException {
+        ResultSet res = preparedStatement.executeQuery();
+        return res;
+    }
+
+    public int execute() throws SQLException {
+        int result = preparedStatement.executeUpdate();
+        return result;
     }
 }
