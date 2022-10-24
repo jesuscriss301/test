@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class Conexion {
 
     private Connection con = null;
+    private static Conexion db;
     private PreparedStatement preparedStatement;
 
     private static final String url = "jdbc:mysql://localhost:3306/";
@@ -33,6 +34,13 @@ public class Conexion {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Conexion getconexion() {
+        if (db == null) {
+            db = new Conexion();
+        }
+        return db;
     }
 
     public void cerrarConexion() {
@@ -53,4 +61,13 @@ public class Conexion {
         int result = preparedStatement.executeUpdate();
         return result;
     }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setPreparedStatement(String sql) throws SQLException {
+        this.preparedStatement = con.prepareStatement(sql);
+    }
+
 }
