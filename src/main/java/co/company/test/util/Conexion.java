@@ -3,6 +3,7 @@ package co.company.test.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.concurrent.ExecutionException;
 
 /*
@@ -40,5 +41,10 @@ public class Conexion {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public ResultSet query(){
+    ResultSet res = preparedStatement.executeQuery();
+    return res;
     }
 }
