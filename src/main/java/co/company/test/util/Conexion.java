@@ -36,7 +36,7 @@ public class Conexion {
         }
     }
 
-    public static Conexion getconexion() {
+    public static Conexion getConexion() {
         if (db == null) {
             db = new Conexion();
         }
@@ -66,8 +66,9 @@ public class Conexion {
         return con;
     }
 
-    public void setPreparedStatement(String sql) throws SQLException {
+    public PreparedStatement setPreparedStatement(String sql) throws SQLException {
         this.preparedStatement = con.prepareStatement(sql);
+        return preparedStatement;
     }
 
 }
